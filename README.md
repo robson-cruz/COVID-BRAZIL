@@ -1,2 +1,2 @@
 # COVID-BRAZIL
-https://rpubs.com/rcflorestal/777602
+https://rpubs.com/rcflorestal/806372

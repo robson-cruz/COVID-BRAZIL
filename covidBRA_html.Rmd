@@ -24,14 +24,16 @@ library(directlabels)
 library(ggrepel)
 ```
 
+
 ```{r, echo=FALSE}
 ## Load the Brazilian COVID data set
 covid <- read.csv(
-        "./data/HIST_PAINEL_COVIDBR_07set2021.csv",
+        "./data/HIST_PAINEL_COVIDBR_12nov2021.csv",
         header = TRUE,
         sep = ";",
         dec = ",")
 ```
+
 
 ## Brasil - Situação em 07 de setembro de 2021.
 
@@ -40,7 +42,7 @@ covid <- read.csv(
 ## Cumulative COVID Cases in Brazil
 casosAcumTab <- covid %>%
         filter(
-                data == "2021-09-07",
+                data == "2021-11-12",
                 regiao == 'Brasil'
         ) %>%
         #mutate(Data = as.Date(data, "%Y-%m-%d")) %>%
@@ -398,7 +400,7 @@ ggplotly(covidNewCases)
 ```{r, echo=FALSE, warning=FALSE, comment='', message=FALSE, fig.align='center'}
 ## Load the Brazilian COVID data set
 covid_to_map <- read.csv2(
-        './data/HIST_PAINEL_COVIDBR_07set2021.csv',
+        './data/HIST_PAINEL_COVIDBR_12nov2021.csv',
         header = TRUE,
         encoding = 'Windows-1252') %>% 
         filter(regiao != 'Brasil', municipio != '', estado != '') %>%
@@ -425,7 +427,7 @@ covid_cities <- covid_to_map %>%
 brazil <- readOGR('./data/brazil.shp', verbose = FALSE)
 
 map_covid <- covid_cities %>%
-        filter(data == '2021-09-07') %>%
+        filter(data == '2021-11-12') %>%
         select(lat, lng, municipio, obitosAcumulado) %>%
         group_by(lng, lat, municipio) %>%
         summarise(totalDeaths = sum(obitosAcumulado, na.rm = TRUE)) %>%
